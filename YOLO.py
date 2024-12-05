@@ -92,7 +92,7 @@ class ValorantDetectorBot:
         return np.array(ImageGrab.grab(bbox=region))
 
     def detect_objects(self, image):
-     with torch.amp.autocast(device_type='cuda'):  # Fixed autocast syntax
+     with torch.amp.autocast(device_type='cuda'):
         results = self.model(image)
         detections = results.pandas().xyxy[0]
         if self.target_classes:
